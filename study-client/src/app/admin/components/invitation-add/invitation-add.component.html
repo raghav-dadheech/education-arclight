@@ -1,0 +1,109 @@
+<div class="container-fluid pt-1">
+    <div class="card">
+        <div class="card-header">
+            Invite User
+        </div>
+        <div class="card-body">
+            <form [formGroup]="invitationForm" (ngSubmit)="invite()">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p [ngClass]="{ 'has-error': organisation.invalid && (organisation.dirty || organisation.touched)}">
+                            <label for="inputOrganisation">Organisation *</label>
+                            <select id="inputOrganisation" class="form-control" formControlName="organisation"
+                            [(ngModel)]="selected_organisation">
+                                <option *ngFor="let organisation of organisations" [value]="organisation.name">
+                                    {{ organisation.name }}</option>
+                            </select>
+                        </p>
+                        <div *ngIf="organisation.invalid && (organisation.dirty || organisation.touched)">
+                            <div *ngIf="organisation.errors.required" class="has-error">
+                                Organisation is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p [ngClass]="{ 'has-error': role.invalid && (role.dirty || role.touched)}">
+                            <label for="inputRole">Role *</label>
+                            <select id="inputRole" class="form-control" formControlName="role" [(ngModel)]="selected_role">
+                                <option *ngFor="let role of roles" [value]="role.role">
+                                    {{ role.role }}</option>
+                            </select>
+                        </p>
+                        <div *ngIf="role.invalid && (role.dirty || role.touched)">
+                            <div *ngIf="role.errors.required" class="has-error">
+                                Role is required.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p [ngClass]="{ 'has-error': username.invalid && (username.dirty || username.touched)}">
+                            <label for="inputUsername">Email or Phone Number *</label>
+                            <input type="text" class="form-control" id="inputUsername" formControlName="username" placeholder="Email or phone number to invite"
+                                [(ngModel)]="selected_username"/>
+                        </p>
+                        <div *ngIf="username.invalid && (username.dirty || username.touched)">
+                            <div *ngIf="username.errors.required" class="has-error">
+                                Email or Phone number is required.
+                            </div>
+                            <div *ngIf="username.errors.maxlength && !username.errors.required" class="has-error">
+                                Length must not be greater than 50.
+                            </div>
+                            <div *ngIf="username.errors.emailOrPhone && !username.errors.required && !username.errors.maxlength" class="has-error">
+                                Invalid email or phone.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputUsername">Keywords</label>
+                        <input type="text" class="form-control" id="inputKeyword" formControlName="keyword"
+                                [(ngModel)]="selected_keyword" placeholder="text to identify the person"/>
+                    </div>
+                </div>
+                  <div class="col-12 d-flex justify-content-between">
+                    <div>
+                        <button class="float-left btn btn-primary" [disabled]="!invitationForm.valid" 
+                        >Invite</button>
+                        <button class="float-left btn btn-secondary ml-2" type="button" 
+                            (click)="cancel()">Cancel</button>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+    <div class="card" *ngIf="questionId!=null">
+        <div class="card-header">
+            Solution
+        </div>
+        <div class="card-body">
+            <div class="form-row" *ngIf="solutionImage != null">
+                <div class="form-group col-md-12">
+                    <a href="{{ solutionImage }}" target="_blank">Existing Solution</a>
+                    <span class="ml-2" (click)="deleteSolutionsModal()">
+                        <i class="fas fa-times-circle text-danger"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="solutionFile" (change)="handleSolutionFileInput($event.target.files)">
+                        <label class="custom-file-label" for="solutionFile" id="solutionFileLabel">Add Solution</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+                <div>
+                    <button class="float-left btn btn-primary" [disabled]="!solutionUpdated" (click)="uploadFiles()"
+                    >Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

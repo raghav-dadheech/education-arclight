@@ -1,0 +1,217 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import '@angular/material/prebuilt-themes/indigo-pink.css'; */
+html, body { 
+  height: 100%; 
+}
+body { 
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;;
+}
+
+.body-img {
+  min-height: 294.391px;
+  background-image: url("assets/img/background.jpeg") !important;
+  /* height: 100% !important; */
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+.modal-dialog {
+    margin: 2px auto;
+    z-index: 1100 !important;
+}
+.spinner-wrapper {
+    position: fixed;
+    width: 100%;
+    height:100%;
+    display: none;
+    align-items: center;
+    top: 0;
+    background-color: #0144611a;
+    z-index: 9999;
+  }
+  .spinner {
+    display: flex;
+    margin: 0 auto;
+  }
+  
+  .question-container-body {
+    height: 350px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+  }
+
+  .question-container-footer {
+    height: 45px;
+    bottom: 0;
+    /* justify-content: space-between; */
+    width: 100%;
+    /* display: flex; */
+  }
+
+  .que-not-visited {
+    background: url("assets/icons/not_visited.png");
+    color: #303030 !important;
+  }
+
+  .que-not-answered {
+    background: url("assets/icons/not_answered.png");
+    border-color:#33414E !important;
+    color:#fff !important;
+  }
+
+  .que-saved {
+    background: url("assets/icons/saved.png");
+    color: #fff !important;
+  }
+
+  .que-marked-for-review {
+    background: url("assets/icons/marked_for_review.png");
+    border-color:#33414E !important;
+    color:#fff !important;
+  }
+
+  .que-saved-marked-for-review {
+    background: url("assets/icons/saved_marked_for_review.png");
+    color: #fff !important;
+  }
+
+  .test-ques-stats {
+    padding: 8px 13px;
+    background-size: 100% 100%;
+    margin-right: 10px;
+}
+
+/* a:focus, a:hover {
+  color: #267280 !important;
+  text-decoration: underline !important;
+} */
+
+.page-item {
+  display: inherit;
+}
+.pagination > li > a {
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  color: #012B55;
+  background-color:#fff;
+  position: relative;
+  float: left;
+  cursor: pointer;
+}
+
+.cursor {
+  cursor: pointer;
+}
+/* .dropdown-menu{
+  transform: translate3d(5px, 35px, 0px)!important;
+} */
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+  z-index: 99999 !important;
+}
+
+.has-error {
+  color: rgb(230, 14, 14);
+}
+
+p.has-error .ng-invalid {
+  border-color:  rgb(230, 14, 14) !important;
+}
+
+label:not(.form-check-label):not(.custom-file-label) {
+  font-weight: 400 !important;
+  font-size: 1rem;
+}
+
+.dropdown.no-arrow .dropdown-toggle::after {
+  display: none;
+}
+.card-header {
+  padding: 0.75rem 1.25rem !important;
+  margin-bottom: 0 !important;
+  background-color: #f8f9fc !important;
+  border-bottom: 1px solid #e3e6f0 !important;
+}
+
+.text-gray-400 {
+  color: #d1d3e2 !important;
+}
+
+.select2-selection__choice {
+  color: #676b6a !important;
+}
+
+/* TOASTR BUGFIX */
+#toast-container > div {
+  opacity: 1;
+}
+.toast {
+  font-size: initial !important;
+  border: initial !important;
+  backdrop-filter: blur(0) !important;
+}
+.toast-success {
+  background-color: #51A351 !important;
+}
+.toast-error {
+  background-color: #BD362F !important;
+}
+.toast-info {
+  background-color: #2F96B4 !important;
+}
+.toast-warning {
+  background-color: #F89406 !important;
+}
+
+.card {
+  font-family: Montserrat-Medium;
+  font-size: 12px;
+}
+
+.card-header {
+background-color: #002933 !important;
+  color: #ffffff;
+}
+
+.table th {
+  font-family: Montserrat-Medium;
+  font-size: 12px;
+  color: #fff;
+  line-height: 1.4;
+  text-transform: uppercase;
+  background-color: #002933;
+}
+
+.table td {
+  font-family: Montserrat-Medium;
+  font-size: 16px;
+}
+
+.table-hover tbody tr:hover {
+  color: #212529 !important;
+  background-color: #e9faff !important;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #ffffff;
+  background-color: #002933 !important;
+  border-color: #002933 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e9faff !important;
+}
+
+.card-body {
+  overflow: auto;
+}
+
+.datepicker-dropdown {
+  z-index: 10000 !important;
+}

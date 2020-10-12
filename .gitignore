@@ -1,0 +1,24 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+study-server/build
+study-client/build
+study-client/dist
+study-client/e2e
+study-client/node_modules
+study-client/.git
+study-client/.gradle
+.project
+.settings
+study-server/bin/
+.metadata
+study-client/package-lock.json
+gradle
+study-client/node/node_modules
+study-client/src/node/node_modules
+study-client/target/
+study-server/target
+study-server/.attach_*
+target/

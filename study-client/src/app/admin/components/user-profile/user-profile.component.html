@@ -1,0 +1,295 @@
+<section class="content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">My Profile</h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="profileForm" (ngSubmit)="save()">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': firstName.invalid && (firstName.dirty || firstName.touched)}">
+                                    <label for="inputFirstName">First Name *</label>
+                                    <input type="text" class="form-control" id="inputFirstName" formControlName="firstName"
+                                        [(ngModel)]="selected_firstName" />
+                                </p>
+                                <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
+                                    <div *ngIf="firstName.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="firstName.errors.maxlength" class="has-error">
+                                        {{MAX_50_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': lastName.invalid && (lastName.dirty || lastName.touched)}">
+                                    <label for="inputLastName">Last Name</label>
+                                    <input type="text" class="form-control" id="inputLastName" formControlName="lastName"
+                                        [(ngModel)]="selected_lastName" />
+                                </p>
+                                <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                                    <div *ngIf="lastName.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="lastName.errors.maxlength" class="has-error">
+                                        {{MAX_50_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': email.invalid && (email.dirty || email.touched)}">
+                                    <label for="inputEmail">Email *</label>
+                                    <input type="text" class="form-control" id="inputEmail" formControlName="email"
+                                        [(ngModel)]="selected_email" />
+                                </p>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                                    <div *ngIf="email.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="email.errors.maxlength" class="has-error">
+                                        {{MAX_50_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': phone.invalid && (phone.dirty || phone.touched)}">
+                                    <label for="inputPhone">Phone *</label>
+                                    <input type="text" class="form-control" id="inputPhone" formControlName="phone"
+                                        [(ngModel)]="selected_phone" />
+                                </p>
+                                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                                    <div *ngIf="phone.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                                <div *ngIf="phone.errors.maxlength" class="has-error">
+                                    {{INVALID_PHONE_ERROR}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': gender.invalid && (gender.dirty || gender.touched)}">
+                                    <label for="inputgender">Gender *</label>
+                                    <select id="inputgender" class="form-control" formControlName="gender" [(ngModel)]="selected_gender">
+                                        <option *ngFor="let gender of genders" [value]="gender.name">
+                                            {{ gender.name }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="gender.invalid && (gender.dirty || gender.touched)">
+                                    <div *ngIf="gender.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': dob.invalid && (dob.dirty || dob.touched)}">
+                                    <label for="inputdob">Date of Birth *</label>
+                                    <input type="text" class="form-control" id="inputdob" formControlName="dob"
+                                        [(ngModel)]="selected_dob" />
+                                </p>
+                                <div *ngIf="dob.invalid && (dob.dirty || dob.touched)">
+                                    <div *ngIf="dob.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': fatherName.invalid && (fatherName.dirty || fatherName.touched)}">
+                                    <label for="inputfatherName">Father's Name *</label>
+                                    <input type="text" class="form-control" id="inputfatherName" formControlName="fatherName"
+                                        [(ngModel)]="selected_fatherName" />
+                                </p>
+                                <div *ngIf="fatherName.invalid && (fatherName.dirty || fatherName.touched)">
+                                    <div *ngIf="fatherName.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="fatherName.errors.maxlength" class="has-error">
+                                        {{MAX_50_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': fatherPhone.invalid && (fatherPhone.dirty || fatherPhone.touched)}">
+                                    <label for="inputfatherPhone">Father's Phone</label>
+                                    <input type="text" class="form-control" id="inputfatherPhone" formControlName="fatherPhone"
+                                        [(ngModel)]="selected_fatherPhone" />
+                                </p>
+                                <div *ngIf="fatherPhone.invalid && (fatherPhone.dirty || fatherPhone.touched)">
+                                    <div *ngIf="fatherPhone.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="fatherPhone.errors.maxlength" class="has-error">
+                                        {{INVALID_PHONE_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': addressLine1.invalid && (addressLine1.dirty || addressLine1.touched)}">
+                                    <label for="inputaddressLine1">Address Line 1 *</label>
+                                    <input type="text" class="form-control" id="inputaddressLine1" formControlName="addressLine1"
+                                        [(ngModel)]="selected_addressLine1" />
+                                </p>
+                                <div *ngIf="addressLine1.invalid && (addressLine1.dirty || addressLine1.touched)">
+                                    <div *ngIf="addressLine1.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="addressLine1.errors.maxlength" class="has-error">
+                                        {{MAX_100_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': addressLine2.invalid && (addressLine2.dirty || addressLine2.touched)}">
+                                    <label for="inputaddressLine2">Address Line 2</label>
+                                    <input type="text" class="form-control" id="inputaddressLine2" formControlName="addressLine2"
+                                        [(ngModel)]="selected_addressLine2" />
+                                </p>
+                                <div *ngIf="addressLine2.invalid && (addressLine2.dirty || addressLine2.touched)">
+                                    <div *ngIf="addressLine2.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="addressLine2.errors.maxlength" class="has-error">
+                                        {{MAX_100_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': pincode.invalid && (pincode.dirty || pincode.touched)}">
+                                    <label for="inputpincode">Pincode *</label>
+                                    <input type="text" class="form-control" id="inputpincode" formControlName="pincode"
+                                        [(ngModel)]="selected_pincode" />
+                                </p>
+                                <div *ngIf="pincode.invalid && (pincode.dirty || pincode.touched)">
+                                    <div *ngIf="pincode.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="pincode.errors.maxlength" class="has-error">
+                                        {{INVALID_PINCODE_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': country.invalid && (country.dirty || country.touched)}">
+                                    <label for="inputcountry">Country *</label>
+                                    <select id="inputcountry" class="form-control" formControlName="country"
+                                        (change)="setStates()" [(ngModel)]="selected_country">
+                                        <option *ngFor="let country of countries" [value]="country.name">
+                                            {{ country.name }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="country.invalid && (country.dirty || country.touched)">
+                                    <div *ngIf="country.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': state.invalid && (state.dirty || state.touched)}">
+                                    <label for="inputstate">State *</label>
+                                    <select id="inputstate" class="form-control" formControlName="state"
+                                        (change)="setCities()" [(ngModel)]="selected_state">
+                                        <option *ngFor="let state of states" [value]="state.name">
+                                            {{ state.name }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="state.invalid && (state.dirty || state.touched)">
+                                    <div *ngIf="state.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': city.invalid && (city.dirty || city.touched)}">
+                                    <label for="inputcity">City *</label>
+                                    <select id="inputcity" class="form-control" formControlName="city"
+                                        (change)="setChapters()" [(ngModel)]="selected_city">
+                                        <option *ngFor="let city of cities" [value]="city">
+                                            {{ city }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="city.invalid && (city.dirty || city.touched)">
+                                    <div *ngIf="city.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': school.invalid && (school.dirty || school.touched)}">
+                                    <label for="inputschool">School *</label>
+                                    <input type="text" class="form-control" id="inputschool" formControlName="school"
+                                        [(ngModel)]="selected_school" />
+                                </p>
+                                <div *ngIf="school.invalid && (school.dirty || school.touched)">
+                                    <div *ngIf="school.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                    <div *ngIf="school.errors.maxlength" class="has-error">
+                                        {{MAX_100_LENGTH_ERROR}}
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': class.invalid && (class.dirty || class.touched)}">
+                                    <label for="inputclass">Class *</label>
+                                    <select id="inputclass" class="form-control" formControlName="class"
+                                        (change)="setChapters()" [(ngModel)]="selected_class">
+                                        <option *ngFor="let class of classes" [value]="class.name">
+                                            {{ class.name }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="class.invalid && (class.dirty || class.touched)">
+                                    <div *ngIf="class.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <p [ngClass]="{ 'has-error': course.invalid && (course.dirty || course.touched)}">
+                                    <label for="inputcourse">Course *</label>
+                                    <select id="inputcourse" class="form-control" formControlName="course"
+                                        (change)="setChapters()" [(ngModel)]="selected_course">
+                                        <option *ngFor="let course of courses" [value]="course.name">
+                                            {{ course.name }}</option>
+                                    </select>
+                                </p>
+                                <div *ngIf="course.invalid && (course.dirty || course.touched)">
+                                    <div *ngIf="course.errors.required" class="has-error">
+                                        {{FIELD_EMPTY_ERROR}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex justify-content-between">
+                            <div>
+                                <button class="float-left btn btn-primary" [disabled]="!profileForm.valid">Save</button>
+                                <button class="float-left btn btn-secondary ml-2" type="button"
+                                    (click)="cancel()">Cancel</button>
+                            </div>
+                            <button class="float-right btn btn-danger" type="button" (click)="deleteConfirmation()"
+                                *ngIf="questionId!=null">Delete</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

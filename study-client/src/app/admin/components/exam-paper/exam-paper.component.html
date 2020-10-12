@@ -1,0 +1,282 @@
+<div class="container-fluid pt-5 pl-5">
+    <div class="row" [hidden]='visibleSection.topSelection'>
+        <div class="col-md-3 col-sm-6 col-12 cursor" (click)="takeExam('exam')">
+            <div class="info-box bg-info">
+                <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Practice Papers</span>
+                    <span class="info-box-number">41,410</span>
+
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <div class="col-md-3 col-sm-6 col-12 cursor" (click)="takeExam('other')">
+            <div class="info-box bg-success">
+              <span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
+
+              <div class="info-box-content">
+                <span class="info-box-text">Practice Yourself</span>
+                <span class="info-box-number">41,410</span>
+
+                <div class="progress">
+                  <div class="progress-bar" style="width: 70%"></div>
+                </div>
+                <span class="progress-description">
+                  70% Increase in 30 Days
+                </span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+          </div>
+    </div>
+    <div class="w-100" [hidden]='visibleSection.examSelection'>
+        <div class="card">
+            <div class="card-header">
+                Select Exam Paper
+            </div>
+            <div class="card-body">
+                <form [formGroup]="examProperties" (ngSubmit)="proceed('exam')">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p [ngClass]="{ 'has-error': exam.invalid && (exam.dirty || exam.touched)}">
+                                <label for="inputExam">Exam *</label>
+                                <select id="inputExam" class="form-control" formControlName="exam"
+                                [(ngModel)]="selected_exam">
+                                    <option *ngFor="let exam of exams" [value]="exam.id">
+                                        {{ exam.name }}</option>
+                                </select>
+                            </p>
+                            <div *ngIf="exam.invalid && (exam.dirty || exam.touched)">
+                                <div *ngIf="exam.errors.required" class="has-error">
+                                    Required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <button class="float-left btn btn-primary" [disabled]="!examProperties.valid">Proceed</button>
+                        <button class="float-left btn btn-secondary" type="button" (click)="backToTop()">Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="w-100" [hidden]='visibleSection.otherSelection'>
+        <div class="card">
+            <div class="card-header">
+                Select Question Patterns
+            </div>
+            <div class="card-body">
+                <form [formGroup]="properties" (ngSubmit)="proceed('practice')">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <p [ngClass]="{ 'has-error': subject.invalid && (subject.dirty || subject.touched)}">
+                                <label for="inputSubject">Subject *</label>
+                                <select id="inputSubject" class="form-control" formControlName="subject" (change)="setChapters()"
+                                [(ngModel)]="selected_subject">
+                                    <option *ngFor="let subject of subjects" [value]="subject.id">
+                                        {{ subject.name }}</option>
+                                </select>
+                            </p>
+                            <div *ngIf="subject.invalid && (subject.dirty || subject.touched)">
+                                <div *ngIf="subject.errors.required" class="has-error">
+                                    Subject is required.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputState">Chapter</label>
+                            <select id="inputChapter" class="form-control" formControlName="chapter" [(ngModel)]="selected_chapter">
+                                <!-- <option *ngFor="let chapter of chapters" [value]="chapter.id">
+                                    {{ chapter.name }}</option> -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputQuestionType">Question Type</label>
+                            <select id="inputQuestionType" class="form-control" formControlName="question_type" [(ngModel)]="selected_question_type">
+                                <option *ngFor="let question_type of question_types" [value]="question_type.id">
+                                {{ question_type.name }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputDifficultyLevel">No of Questions</label>
+                            <select id="inputDifficultyLevel" class="form-control" formControlName="no_of_question" [(ngModel)]="selected_no_of_question">
+                                <option *ngFor="let no_of_question of no_of_questions" [value]="no_of_question.value">
+                                {{ no_of_question.value }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 d-flex justify-content-between">
+                        <button class="float-left btn btn-primary" [disabled]="!properties.valid">Proceed</button>
+                        <button class="float-left btn btn-secondary" type="button" (click)="backToTop()">Back</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="card p-5 col-6" [hidden]='visibleSection.topSelection'>
+            <button type="button" class="btn btn-danger" (click)="takeExam('exam')">
+                Practice Exam Papers
+            </button>
+            <button type="button" class="btn btn-warning mt-5" (click)="takeExam('other')">
+                Others
+            </button>
+        </div>
+        <div class="p-5 w-100" [hidden]='visibleSection.examSelection'>
+            <mat-card>
+                <mat-card-title>Select Exam Paper</mat-card-title>
+                <mat-card-content class="container">
+                    <form class="properties-form" [formGroup]="examProperties" (ngSubmit)="proceed('exam')">
+                        <div>
+                            <div fxLayout="column">
+                                <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>Exam</mat-label>
+                                            <mat-select formControlName="exam" 
+                                                [(ngModel)]="selected_exam">
+                                                <mat-option *ngFor="let exam of exams" [value]="exam.id">
+                                                    {{ exam.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="examProperties.get('exam').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="float-left" [disabled]="!examProperties.valid" mat-raised-button
+                                        color="primary">Proceed</button>
+                                    <button class="float-left ml-2" type="button" mat-raised-button
+                                        (click)="backToTop()">Back</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="p-5 w-100" [hidden]='visibleSection.otherSelection'>
+            <mat-card>
+                <mat-card-title>Select Question Patterns</mat-card-title>
+                <mat-card-content class="container">
+                    <form class="properties-form" [formGroup]="properties" (ngSubmit)="proceed('practice')">
+                        <div>
+                            <div fxLayout="column">
+                                <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>Subject</mat-label>
+                                            <mat-select formControlName="subject" (selectionChange)="setChapters()"
+                                                [(ngModel)]="selected_subject">
+                                                <mat-option *ngFor="let subject of subjects" [value]="subject.id">
+                                                    {{ subject.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="properties.get('subject').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>Chapter</mat-label>
+                                            <mat-select formControlName="chapter" [(ngModel)]="selected_chapter" multiple>
+                                                <mat-option #allChapters (click)="toggleAllSelection('chapter')" [value]="0">All</mat-option>
+                                                <mat-option *ngFor="let chapter of chapters" [value]="chapter.id" (click)="tosslePerOne('chapter')">
+                                                    {{ chapter.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="properties.get('chapter').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>Question Type</mat-label>
+                                            <mat-select formControlName="question_type"
+                                                [(ngModel)]="selected_question_type" multiple>
+                                                <mat-option #allQuestionTypes (click)="toggleAllSelection('question_type')" [value]="0">All</mat-option>
+                                                <mat-option *ngFor="let question_type of question_types"
+                                                    [value]="question_type.id" (click)="tosslePerOne('question_type')">
+                                                    {{ question_type.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="properties.get('question_type').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>No of Questions</mat-label>
+                                            <mat-select formControlName="no_of_question"
+                                                [(ngModel)]="selected_no_of_question">
+                                                <mat-option *ngFor="let no_of_question of no_of_questions"
+                                                    [value]="no_of_question.value">
+                                                    {{ no_of_question.value }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="properties.get('no_of_question').hasError('required')">
+                                                Required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                    <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center"
+                                        class="row-example" [hidden]="true">
+                                        <mat-form-field class="mr-0 w-100">
+                                            <mat-label>Difficulty Level</mat-label>
+                                            <mat-select formControlName="difficulty_level"
+                                                [(ngModel)]="selected_difficulty_level" multiple>
+                                                <mat-option #allDifficultyLevels (click)="toggleAllSelection('difficulty_level')" [value]="0">All</mat-option>
+                                                <mat-option *ngFor="let difficulty_level of difficulty_levels"
+                                                    [value]="difficulty_level.id" (click)="tosslePerOne('difficulty_level')">
+                                                    {{ difficulty_level.name }}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error *ngIf="properties.get('difficulty_level').hasError('required')">
+                                                Question type is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="float-left" [disabled]="!properties.valid" mat-raised-button
+                                        color="primary">Proceed</button>
+                                    <button class="float-left ml-2" type="button" mat-raised-button
+                                        (click)="backToTop()">Back</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div> -->

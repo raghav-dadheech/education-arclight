@@ -1,0 +1,60 @@
+<!-- <div class="dashboard-container" [class.dashboard-is-mobile]="mobileQuery.matches"> -->
+    <div class="wrapper">
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="nav-item dropdown user-menu">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <img src="../../assets/img/user2-160x160.jpg" class="user-image img-circle elevation-2"
+                    alt="User Image">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <div class="col-md-12 h-100" style="padding: 0;">
+                  <div class="card card-widget widget-user">
+                    <div class="widget-user-header bg-info">
+                      <h3 class="widget-user-username">{{userFullName}}</h3>
+                      <!-- <h5 class="widget-user-desc">Founder &amp; CEO</h5> -->
+                    </div>
+                    <div class="widget-user-image">
+                      <img class="img-circle elevation-2" src="../../assets/img/user2-160x160.jpg" alt="User Avatar">
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+                        <div class="col-12 d-flex justify-content-left">
+                          <!-- <button class="float-left btn btn-primary" style="background-color: #17a2b8 !important;border-color: #17a2b8 !important;" type="button" (click)="logOut()">Sign Out</button> -->
+                          <a href="javascript:void(0)" (click)="logOut()">Sign Out</a>
+                      </div>
+                      <div class="col-12 d-flex justify-content-left">
+                        <a href="javascript:void(0)" (click)="changePassword()">Change Password</a>
+                    </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </ul>
+        </li>
+    </ul>
+</nav>
+    <app-sidebar></app-sidebar>
+    <div class="content-wrapper">
+        <router-outlet name='dashboard-outlet'></router-outlet>
+    </div>
+</div>
+<div id="studentProfileModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Invitations</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
