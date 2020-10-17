@@ -72,6 +72,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -140,5 +144,8 @@
       }
     }
   },
-  "defaultProject": "study-client"
+  "defaultProject": "study-client",
+  "cli": {
+    "analytics": "108cb2e6-78d8-4774-8c75-92ce28977754"
+  }
 }

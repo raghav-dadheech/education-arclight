@@ -5,8 +5,8 @@
 
 export const environment = {
   // BASE_URL: 'https://common-web.herokuapp.com/',
-  BASE_URL: 'http://localhost:8080/',
+  // BASE_URL: 'http://localhost:8080/',
   // BASE_URL: 'https://practice-world.herokuapp.com/',
-  // BASE_URL: 'http://studyapp-stage.ap-south-1.elasticbeanstalk.com/',
+   BASE_URL: 'http://studyapp-stage.ap-south-1.elasticbeanstalk.com/',
   production: false
 };

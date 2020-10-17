@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './user/login/login.component';
@@ -20,7 +19,6 @@ import { ExamSharingService } from './admin/services/exam-sharing.service';
 import { UserService } from './services/user.service'
 import { QuestionsListComponent } from './admin/components/questions-list/questions-list.component';
 import {MathJaxModule} from 'ngx-mathjax';
-import { FlexLayoutModule } from '@angular/flex-layout';
 // import { MaterialModule } from "./material.module";
 import { AlertsComponent } from "./alerts/alerts.component" 
 import { DataTablesModule } from 'angular-datatables';
@@ -78,11 +76,9 @@ export const NO_ERRORS_SCHEMA: SchemaMetadata = {
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    AngularFontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
     DataTablesModule,
     ToastrModule.forRoot()
   ],
