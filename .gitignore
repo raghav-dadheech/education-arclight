@@ -16,9 +16,12 @@ study-server/bin/
 .metadata
 study-client/package-lock.json
 gradle
+study-client/node/
 study-client/node/node_modules
 study-client/src/node/node_modules
 study-client/target/
 study-server/target
+study-server/.classpath
+study-server/src/main/resources/application.properties
 study-server/.attach_*
 target/

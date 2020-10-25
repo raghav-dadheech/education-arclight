@@ -17,6 +17,8 @@ export class SidebarComponent implements OnDestroy, OnInit {
 
   userFullName = '';
   Role = Role;
+  profileCompleted = true;
+  
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,
     private AppConstants : AppConstants, private authService: AuthService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
