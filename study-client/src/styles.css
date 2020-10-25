@@ -169,8 +169,9 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 
 .card {
-  font-family: Montserrat-Medium;
-  font-size: 12px;
+  /*font-family: Montserrat-Medium;*/
+  font-size: 13px;
+    font-family: cursive;
 }
 
 .card-header {
